@@ -146,6 +146,13 @@ class Individual_model extends CI_Model
 			'individual_email2'=>$this->input->post('individual_email2'),
 			'document_id'=>$this->input->post('document_id'),
 			'document_number'=>$this->input->post('document_number'),
+			'employment_id'=>$this->input->post('employment_id'),
+			'transfers_in'=>$this->input->post('transfers_in'),
+			'exit_reason'=>$this->input->post('exit_reason'),
+			'employment_date'=>$this->input->post('employment_date'),
+			'scheme_duration'=>$this->input->post('scheme_duration'),
+			'joined_scheme_date'=>$this->input->post('joined_scheme_date'),
+			'scheme_leaving_date'=>$this->input->post('scheme_leaving_date'),
 			'document_place'=>$this->input->post('document_place')
 		);
 		
@@ -184,6 +191,12 @@ class Individual_model extends CI_Model
 			'individual_city'=>$this->input->post('individual_city'),
 			'image'=>$image,
 			'signature'=>$signature,
+			'transfers_in' =>$this->input->post('transfers_in'),
+			'exit_reason'=>$this->input->post('exit_reason'),
+			'employment_date' =>$this->input->post('employment_date'),
+			'scheme_duration' =>$this->input->post('scheme_duration'),
+			'joined_scheme_date' =>$this->input->post('joined_scheme_date'),
+			'scheme_leaving_date' =>$this->input->post('scheme_leaving_date'),
 			'individual_email2'=>$this->input->post('individual_email2'),
 			'document_id'=>$this->input->post('document_id'),
 			'document_number'=>$this->input->post('document_number'),

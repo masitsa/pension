@@ -123,6 +123,7 @@ class Individual extends microfinance
 		$this->form_validation->set_rules('individual_post_code', 'Post code', 'xss_clean');
 		$this->form_validation->set_rules('individual_email2', 'Email 2', 'valid_email|is_unique[individual.individual_email2]|xss_clean');
 		$this->form_validation->set_rules('document_id', 'Document type', 'xss_clean');
+		$this->form_validation->set_rules('employment_id', 'Employment type', 'xss_clean');
 		$this->form_validation->set_rules('document_number', 'Document number', 'xss_clean');
 		$this->form_validation->set_rules('document_place', 'Place of issue', 'xss_clean');
 		

@@ -12,12 +12,19 @@ $civil_status_id = set_value('civil_status_id');
 $individual_locality = set_value('individual_locality');
 $title_id = set_value('title_id');
 $gender_id = set_value('gender_id');
+$employment_date = set_value('employment_date');
+$joined_scheme_date = set_value('joined_scheme_date');
+$scheme_leaving_date = set_value ('scheme_leaving_date');
 $individual_city = set_value('individual_city');
 $individual_number = set_value('individual_number');
 $individual_post_code = set_value('individual_post_code');
 $document_id = set_value('document_id');
+$scheme_duration = set_value('scheme_duration');
+$transfers_in = set_value('transfers_in');
+$employment_id= set_value ('employment_id');
 $document_number = set_value('document_number');
 $document_place = set_value('document_place');
+$exit_reason = set_value('exit_reason');
 $individual_email2 = set_value('individual_email2');
 ?>          
           <section class="panel">
@@ -99,7 +106,7 @@ $individual_email2 = set_value('individual_email2');
             <label class="col-lg-5 control-label ">Last Name *: </label>
             
             <div class="col-lg-7">
-            	<input type="text" class="form-control " name="individual_lnames" placeholder="Last Name" value="<?php echo $individual_lnames;?>" required>
+            	<input type="text" class="form-control " name="individual_lname" placeholder="Last Name" value="<?php echo $individual_lname;?>" required>
             </div>
         </div>
         
@@ -123,7 +130,18 @@ $individual_email2 = set_value('individual_email2');
                 </div>
             </div>
         </div>
-        
+         <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Employment: </label>
+            
+            <div class="col-lg-7">
+            	<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="employment_date" placeholder="Date of Employment" value="<?php echo $employment_date;?>">
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-lg-5 control-label">Gender: </label>
             
@@ -201,19 +219,13 @@ $individual_email2 = set_value('individual_email2');
             	<input type="text" class="form-control" name="individual_email2" placeholder="Email Address 2" value="<?php echo $individual_email2;?>">
             </div>
         </div>
-        
-	</div>
-    
-    <div class="col-md-6">
-        
-        <div class="form-group">
+         <div class="form-group">
             <label class="col-lg-5 control-label">Phone: </label>
             
             <div class="col-lg-7">
             	<input type="text" class="form-control" name="individual_phone" placeholder="Phone" value="<?php echo $individual_phone;?>">
             </div>
         </div>
-        
         <div class="form-group">
             <label class="col-lg-5 control-label">Phone 2: </label>
             
@@ -222,6 +234,10 @@ $individual_email2 = set_value('individual_email2');
             </div>
         </div>
         
+	</div>
+    
+    <div class="col-md-6">
+        
         <div class="form-group">
             <label class="col-lg-5 control-label">Residence: </label>
             
@@ -229,7 +245,30 @@ $individual_email2 = set_value('individual_email2');
             	<input type="text" class="form-control" name="individual_locality" placeholder="Residence" value="<?php echo $individual_locality;?>">
             </div>
         </div>
-        
+         <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Joining Scheme: </label>
+            
+            <div class="col-lg-7">
+            	<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="joined_scheme_date" placeholder="Date of Joining Schemet" value="<?php echo $joined_scheme_date;?>">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Leaving Scheme: </label>
+            
+            <div class="col-lg-7">
+            	<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="scheme_leaving_date" placeholder="Date of Leaving Schemet" value="<?php echo $scheme_leaving_date;?>">
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-lg-5 control-label">Address: </label>
             
@@ -253,7 +292,54 @@ $individual_email2 = set_value('individual_email2');
             	<input type="text" class="form-control" name="individual_post_code" placeholder="Post code" value="<?php echo $individual_post_code;?>">
             </div>
         </div>
-        
+         <div class="form-group">
+            <label class="col-lg-5 control-label">Employment type: </label>
+            
+            <?php
+            	if($employment_id == 2)
+				{
+			?>
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="1" id="employment_id1">
+                        Employed
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="2" checked="checked" id="employment_id2">
+                        Self Employed
+                    </label>
+                </div>
+            </div>
+            <?php } 
+			
+            	else
+				{
+			?>
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="1" checked="checked" id="employment_id1">
+                        Employed
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="2" id="employment_id2">
+                        Self Employed
+                    </label>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
         <div class="form-group">
             <label class="col-lg-5 control-label">Document type: </label>
             
@@ -318,9 +404,29 @@ $individual_email2 = set_value('individual_email2');
             	<input type="text" class="form-control" name="document_place" placeholder="Place of issue" value="<?php echo $document_place;?>">
             </div>
         </div>
-        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Duration in Scheme(years): </label>
+            
+            <div class="col-lg-7">
+            	<input type="text" class="form-control" name="scheme_duration" placeholder="Duration in scheme" value="<?php echo $scheme_duration;?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Transfers in: </label>
+            
+            <div class="col-lg-7">
+            	<input type="text" class="form-control" name="transfers_in" placeholder="Transfers in" value="<?php echo $transfers_in;?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Reason for Exit: </label>
+            
+            <div class="col-lg-7">
+            	<input type="text" class="form-control" name="exit_reason" placeholder="Reason for Exit" value="<?php echo $exit_reason;?>">
+            </div>
+        </div>
+      </div>
     </div>
-</div>
 <div class="row" style="margin-top:10px;">
 	<div class="col-md-12">
         <div class="form-actions center-align">

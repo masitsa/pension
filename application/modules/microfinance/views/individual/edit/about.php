@@ -13,7 +13,14 @@ $individual_address = $row->individual_address;
 $civil_status_id = $row->civilstatus_id;
 $individual_locality = $row->individual_locality;
 $title_id = $row->title_id;
+$transfers_in = $row->transfers_in;
+$exit_reason = $row->exit_reason;
+$employment_date = $row->employment_date;
+$scheme_duration = $row->scheme_duration;
+$joined_scheme_date = $row->joined_scheme_date;
+$scheme_leaving_date = $row->scheme_leaving_date;
 $gender_id = $row->gender_id;
+$employment_id = $row->employment_id;
 $individual_city = $row->individual_city;
 $individual_number = $row->individual_number;
 $individual_post_code = $row->individual_post_code;
@@ -29,6 +36,12 @@ $validation_error = validation_errors();
 				
 if(!empty($validation_error))
 {
+	$transfers_in = set-value('transfers_in');
+	$exit_reason = set-value('exit_reason');
+	$employment_date = set-value('employment_date');
+	$scheme_duration =  set-value('scheme_duration');
+	$joined_scheme_date = set-value('joined_scheme_date');
+	$scheme_leaving_date = set-value('scheme_leaving_date');
 	$individual_onames = set_value('individual_onames');
 	$individual_fname = set_value('individual_fname');
 	$individual_dob = set_value('individual_dob');
@@ -39,6 +52,7 @@ if(!empty($validation_error))
 	$individual_locality = set_value('individual_locality');
 	$title_id = set_value('title_id');
 	$gender_id = set_value('gender_id');
+	$employment_id = set_value('employment_id');
 	$individual_number = set_value('individual_number');
 	$individual_address = set_value('individual_address');
 	$individual_city = set_value('individual_city');
@@ -186,7 +200,18 @@ if(!empty($validation_error))
                 </div>
             </div>
         </div>
-        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Employment: </label>
+            
+            <div class="col-lg-7">
+            	<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="employment_date" placeholder="Date of Employment" value="<?php echo $employment_date;?>">
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-lg-5 control-label">Gender *: </label>
             
@@ -264,26 +289,20 @@ if(!empty($validation_error))
             	<input type="text" class="form-control" name="individual_email2" placeholder="Email Address 2" value="<?php echo $individual_email2;?>">
             </div>
         </div>
-	</div>
-    
-    <div class="col-md-5">
-        
-        <div class="form-group">
+         <div class="form-group">
             <label class="col-lg-5 control-label">Phone: </label>
             
             <div class="col-lg-7">
             	<input type="text" class="form-control" name="individual_phone" placeholder="Phone" value="<?php echo $individual_phone;?>">
             </div>
         </div>
-        
-        <div class="form-group">
+         <div class="form-group">
             <label class="col-lg-5 control-label">Phone 2: </label>
             
             <div class="col-lg-7">
             	<input type="text" class="form-control" name="individual_phone2" placeholder="Phone 2" value="<?php echo $individual_phone2;?>">
             </div>
         </div>
-        
          <div class="form-group">
             <label class="col-lg-5 control-label">Residence: </label>
             
@@ -291,7 +310,33 @@ if(!empty($validation_error))
             	<input type="text" class="form-control" name="individual_locality" placeholder="Residence" value="<?php echo $individual_locality;?>">
             </div>
         </div>
-        
+	</div>
+    
+    <div class="col-md-5">
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Joining Scheme: </label>
+            
+            <div class="col-lg-7">
+            	<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="joined_scheme_date" placeholder="Date of Joining Schemet" value="<?php echo $joined_scheme_date;?>">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Leaving Scheme: </label>
+            
+            <div class="col-lg-7">
+            	<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="scheme_leaving_date" placeholder="Date of Leaving Schemet" value="<?php echo $scheme_leaving_date;?>">
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-lg-5 control-label">Address: </label>
             
@@ -315,7 +360,54 @@ if(!empty($validation_error))
             	<input type="text" class="form-control" name="individual_post_code" placeholder="Post code" value="<?php echo $individual_post_code;?>">
             </div>
         </div>
-        
+              <div class="form-group">
+            <label class="col-lg-5 control-label">Employment type: </label>
+            
+            <?php
+            	if($employment_id == 2)
+				{
+			?>
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="1" id="employment_id1">
+                        Employed
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="2" checked="checked" id="employment_id2">
+                        Self Employed
+                    </label>
+                </div>
+            </div>
+            <?php } 
+			
+            	else
+				{
+			?>
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="1" checked="checked" id="employment_id1">
+                        Employed
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="employment_id" value="2" id="employment_id2">
+                        Self Employed
+                    </label>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
         <div class="form-group">
             <label class="col-lg-5 control-label">Document type: </label>
             
@@ -391,6 +483,27 @@ if(!empty($validation_error))
                     <input data-format="yyyy-MM-dd" type="text" data-plugin-datepicker class="form-control" name="retirement_date" placeholder="Expected Retirement Date" value="<?php echo $retirement_date;?>">
                 </div>
             </div>
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Duration in Scheme(years): </label>
+            
+            <div class="col-lg-7">
+            	<input type="text" class="form-control" name="scheme_duration" placeholder="Duration in scheme" value="<?php echo $scheme_duration;?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Transfers in: </label>
+            
+            <div class="col-lg-7">
+            	<input type="text" class="form-control" name="transfers_in" placeholder="Transfers in" value="<?php echo $transfers_in;?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Reason for Exit: </label>
+            
+            <div class="col-lg-7">
+            	<input type="text" class="form-control" name="exit_reason" placeholder="Reason for Exit" value="<?php echo $exit_reason;?>">
+            </div>
+        </div>
         </div>
         
     </div>

@@ -33,6 +33,12 @@ class Import_model extends CI_Model
 		$report[$row_count][16] = 'Document type (National ID or Passport';
 		$report[$row_count][17] = 'Document Number';
 		$report[$row_count][18] = 'Place of issue';
+		$report[$row_count][19] = 'transfers_in';
+		$report[$row_count][20]= 'exit_reason';
+		$report[$row_count][21] = 'employment_date (yyyy-mm-dd)';
+		$report[$row_count][22] = 'scheme_duration';
+		$report[$row_count][23] = 'joined_scheme_date (yyyy-mm-dd)';
+		$report[$row_count][24] = 'scheme_leaving_date (yyyy-mm-dd)';
 		
 		$row_count++;
 		
@@ -80,7 +86,7 @@ class Import_model extends CI_Model
 		$total_columns = count($array[0]);//var_dump($array);die();
 		
 		//if products exist in array
-		if(($total_rows > 0) && ($total_columns == 19))
+		if(($total_rows > 0) && ($total_columns == 25))
 		{
 			$items['modified_by'] = $this->session->userdata('personnel_id');
 			$response = '
@@ -119,6 +125,12 @@ class Import_model extends CI_Model
 				$document_type = $array[$r][16];
 				$individual_document_number = $array[$r][17];
 				$items['document_place'] = $array[$r][18];
+				$items['transfers_in'] = $array[$r][19];
+				$items['exit_reason']= $array[$r][20];
+			 	$items['employment_date'] = $array[$r][21];
+				$items['scheme_duration'] = $array[$r][22];
+				$items['joined_scheme_date'] = $array[$r][23];
+				$items['scheme_leaving_date'] = $array[$r][24];
 				$items['created'] = date('Y-m-d H:i:s');
 				$items['modified_by'] = $this->session->userdata('personnel_id');
 				$items['created_by'] = $this->session->userdata('personnel_id');
